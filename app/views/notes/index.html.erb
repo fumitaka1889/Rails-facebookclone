@@ -1,2 +1,20 @@
 <h1>その気持ち、シェアしよう</h1>
 <h2>投稿一覧</h2>
+<table>
+  <tr>
+    <th>タイトル</th>
+    <!-- <th>投稿画像</th> -->
+    <th>コメント</th>
+  </tr>
+<% @notes.each do |note| %>
+  <tr>
+    <td><%= note.title %></td>
+    <!-- <td><%#= note.image %></td> -->
+    <td><%= note.content %></td>
+    <td><%= link_to '詳細', note_path(note.id) %></td>
+    <td><%= link_to '編集', edit_note_path(note.id) %></td>
+    <td><%= link_to '削除', note_path(note.id), method: :delete, data: { confirm: "この投稿を削除します。よろしいですか？"} %></td>
+  </tr>
+<% end %>
+<%= link_to '投稿を作成', new_note_path %>
+</table>
