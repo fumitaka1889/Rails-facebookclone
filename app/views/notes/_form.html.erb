@@ -1,4 +1,4 @@
-<%= form_with(model: @note, local: true) do |form| %>
+<%= form_with(model: @note, local: true, url: choose_new_or_edit) do |form| %>
 <% if @note.errors.any? %>
     <div id="error_explanation">
       <h2><%= @note.errors.count %>件入力がありません</h2>
@@ -15,11 +15,14 @@
   </div>
   <div class="note_field">
     <%= form.label :image %>
+    <%= image_tag(@note.image.url) if @note.image && @note.image.url %>
     <%= form.file_field :image %>
+    <%= form.hidden_field :image_cache %>
   </div>
   <div class="note_content">
     <%= form.label :content %>
     <%= form.text_field :content %>
   </div>
-  <%= form.submit %>
+  <%= form.submit "投稿へ"%>
 <% end %>
+<%= link_to "戻る", notes_path %>

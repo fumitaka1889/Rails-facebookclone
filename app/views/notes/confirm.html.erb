@@ -1,0 +1,11 @@
+<h3>この内容で、投稿しますか？</h3>
+<%= form_with(model: @note, local: true, url: notes_path) do |form| %>
+  <%= form.hidden_field :title %>
+  <%= form.hidden_field :content %>
+  <p>タイトル:<%= @note.title %></p>
+  <p>投稿画像:<%= image_tag(@note.image.url) if @note.image && @note.image.url %></p>
+  <%= form.hidden_field :image_cache %>
+  <p>本文:<%= @note.content %></p>
+  <%= form.submit  "投稿する" %>
+  <%= form.submit "戻る", name: "back" %>
+<% end %>

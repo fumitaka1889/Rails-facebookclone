@@ -1,5 +1,5 @@
 class NotesController < ApplicationController
-  before_action :set_note, only: [:edit, :show, :destroy]
+  before_action :set_note, only: [:edit, :update, :show, :destroy]
   def index
     @notes = Note.all
   end
@@ -8,16 +8,33 @@ class NotesController < ApplicationController
     @note = Note.new
   end
 
+  def confirm
+    @note = Note.new(note_params)
+    render :new if @note.invalid?
+  end
+
   def create
-    @note = Note.create(note_params)
-    if @note.save
-      redirect_to notes_path, notice:"画像を投稿しました！"
-    else
+    @note = Note.new(note_params)
+    if params[:back]
       render :new
+    else
+      if @note.save
+        redirect_to notes_path, notice:"投稿完了！"
+      else
+        render :new
+      end
     end
   end
 
   def edit
+  end
+
+  def update
+    if @note.update(note_params)
+      redirect_to notes_path, notice:"編集完了！"
+    else
+      render :edit
+    end
   end
 
   def show
