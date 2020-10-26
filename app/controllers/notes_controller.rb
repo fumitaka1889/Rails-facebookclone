@@ -9,8 +9,12 @@ class NotesController < ApplicationController
   end
 
   def create
-    Note.create(note_params)
-    redirect_to notes_path, notice:"画像を投稿しました！"
+    @note = Note.create(note_params)
+    if @note.save
+      redirect_to notes_path, notice:"画像を投稿しました！"
+    else
+      render :new
+    end
   end
 
   def edit

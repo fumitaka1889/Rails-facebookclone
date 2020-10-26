@@ -1,4 +1,14 @@
 <%= form_with(model: @note, local: true) do |form| %>
+<% if @note.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @note.errors.count %>件入力がありません</h2>
+      <ul>
+      <% @note.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
   <div class="note_title">
     <%= form.label :title %>
     <%= form.text_field :title %>
