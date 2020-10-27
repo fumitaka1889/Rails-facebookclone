@@ -1,7 +1,7 @@
 <%= form_with(model: @note, local: true, url: choose_new_or_edit) do |form| %>
 <% if @note.errors.any? %>
     <div id="error_explanation">
-      <h2><%= @note.errors.count %>件入力がありません</h2>
+      <h2><%= @note.errors.count %>件入力がありません！</h2>
       <ul>
       <% @note.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
