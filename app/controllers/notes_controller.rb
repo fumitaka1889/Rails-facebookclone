@@ -10,11 +10,13 @@ class NotesController < ApplicationController
 
   def confirm
     @note = Note.new(note_params)
+    @note.user_id = current_user.id
     render :new if @note.invalid?
   end
 
   def create
     @note = Note.new(note_params)
+    @note.user_id = current_user.id
     if params[:back]
       render :new
     else
