@@ -5,7 +5,8 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
-      redirect_to notes_path
+      session[:user_id] = user.id
+      redirect_to user_path(user.id)
     else
       flash.now[:danger] = '入力されたメールアドレスまたはパスワードはアカウントと一致しません。'
       render :new
