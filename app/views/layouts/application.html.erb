@@ -1,22 +1,30 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>HeadNote</title>
+    <title>Headnote</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-    <% flash.each do |key, value| %>
-      <%= content_tag(:div, value, class: "#{key}") %>
-    <% end %>
-    <% if logged_in? %>
-      <%= link_to "ユーザー情報", user_path(current_user.id) %>
-      <%= link_to "ログアウト", session_path(current_user.id), method: :delete %>
-    <% end %>
-    <%= yield %>
+    <header>
+      <ul>
+        <li class="left">Head note</li>
+        <% flash.each do |key, value| %>
+          <%= content_tag(:div, value, class: "#{key}") %>
+        <% end %>
+        <% if logged_in? %>
+          <li class="right"><a href="#"><%= link_to "ユーザー情報", user_path(current_user.id),class:"no-underline" %></a></li>
+          <li class="right"><a href="#"><%= link_to "ログアウト", session_path(current_user.id), method: :delete,class:"no-underline" %></a></li>
+        <% end %>
+      </ul>
+    </header>
+      <%= yield %>
+    <footer>
+      <p>HEAD NOTE株式会社</p>
+      <p>© 2020 HEAD NOTE Corp.</p>
+    </footer>
   </body>
 </html>

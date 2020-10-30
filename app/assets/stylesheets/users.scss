@@ -1,3 +1,64 @@
-// Place all the styles related to the users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  height: 100%
+}
+.wrapper{
+  min-height: 75vh;
+  text-align: center;
+}
+.main-header {
+  padding-bottom: 5%;
+  width: 100%;
+  min-height: rgb(36, 70, 215);
+}
+header {
+  background-color: #becbd0;
+  height: 60px;
+  font-size: 3rem;
+}
+.no-underline{
+  text-decoration:none !important;
+  color: #3769d6;
+}
+ul {
+  margin: 0;
+  list-style: none;
+  text-decoration: none;
+}
+li a {
+  color: #3559a7;
+  text-decoration: none;
+  font-size: 1.5rem;
+}
+.left {
+  float: left;
+  padding: 15px;
+}
+.right{
+  float: right;
+  padding: 15px;
+}
+.user_table {
+  margin-left: auto;
+  margin-right: auto;
+  width: 600px;
+  border: 10px;
+}
+.user_table_td{
+  width: 400px;
+}
+footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+footer p {
+  font-size: 0.5rem;
+  color: rgb(2, 0, 5);
+  text-align: center;
+  vertical-align: middle;
+  bottom: 0;
+}

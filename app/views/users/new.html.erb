@@ -1,4 +1,4 @@
-<h1>アカウント登録</h1>
+<h2>アカウント登録</h2>
 <p>簡単に登録できます。</p>
 <%= form_with(model: @user, local: true) do |f| %>
   <% if @user.errors.any? %>
@@ -11,13 +11,26 @@
       </ul>
     </div>
   <% end %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :email %>
-  <%= f.email_field :email %>
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
-  <%= f.submit "アカウント登録" %>
+  <table class="user_table">
+    <tr>
+      <th><%= f.label :name %></th>
+      <td><%= f.text_field :name,class: "user_table_td" %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :email %></th>
+      <td><%= f.email_field :email,class: "user_table_td" %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :password %></th>
+      <td><%= f.password_field :password,class: "user_table_td" %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :password_confirmation %></th>
+      <td><%= f.password_field :password_confirmation,class: "user_table_td" %></td>
+    </tr>
+    <tr>
+      <th></th>
+      <td><%= f.submit "アカウント登録" %></td>
+    </tr>
+  </table>
 <% end %>
